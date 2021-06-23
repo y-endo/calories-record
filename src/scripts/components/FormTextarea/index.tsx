@@ -39,11 +39,9 @@ const Textarea = styled.textarea.attrs(props => ({
   min-height: 120px;
   resize: vertical;
 
-  /* stylelint-disable */
   ${Text} + & {
     margin-left: 15px;
   }
-  /* stylelint-enable */
 `;
 
 export default FormTextarea;

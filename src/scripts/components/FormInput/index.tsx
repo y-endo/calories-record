@@ -61,11 +61,9 @@ const Input = styled.input.attrs(props => ({
   padding: 0 10px;
   height: 40px;
 
-  /* stylelint-disable */
   ${Text} + & {
     margin-left: 15px;
   }
-  /* stylelint-enable */
 `;
 
 export default FormInput;
