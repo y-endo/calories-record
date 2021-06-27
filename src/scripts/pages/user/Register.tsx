@@ -3,13 +3,13 @@ import { Redirect, RouteComponentProps } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
 import DefaultLayout from '~/scripts/layouts/Default';
-import { Section, SubSection } from '~/scripts/elements/Section';
-import { HeadingLv1 } from '~/scripts/elements/Heading';
-import { Button } from '~/scripts/elements/Button';
-import { Legend } from '~/scripts/elements/Text';
-import UMargin from '~/scripts/utils/UMargin';
-import FormInput from '~/scripts/components/common/FormInput';
-import FormSelect from '~/scripts/components/common/FormSelect';
+import { Section, SubSection } from '~/scripts/components/common/Section';
+import { HeadingLv1 } from '~/scripts/components/common/Heading';
+import { Button } from '~/scripts/components/common/Button';
+import { Legend } from '~/scripts/components/common/Legend';
+import Margin from '~/scripts/utils/Margin';
+import TextField from '~/scripts/components/common/TextField';
+import Select from '~/scripts/components/common/Select';
 
 import { setUser } from '~/scripts/stores/user';
 import { RootState, AppDispatch } from '~/scripts/stores';
@@ -75,10 +75,10 @@ const AccountRegisterPage: React.FC<Props> = ({ history }) => {
           <fieldset>
             <Legend>あなたの情報</Legend>
             <div>
-              <FormInput label={'年齢'} type={'tel'} placeholder={'20'} ref={inputAge} />
+              <TextField label={'年齢'} type={'tel'} placeholder={'20'} ref={inputAge} />
             </div>
             <div>
-              <FormSelect
+              <Select
                 label={'性別'}
                 option={[
                   { text: '選択', hidden: true },
@@ -89,13 +89,13 @@ const AccountRegisterPage: React.FC<Props> = ({ history }) => {
               />
             </div>
             <div>
-              <FormInput label={'身長（cm）'} type={'tel'} placeholder={'170'} ref={inputHeight} />
+              <TextField label={'身長（cm）'} type={'tel'} placeholder={'170'} ref={inputHeight} />
             </div>
             <div>
-              <FormInput label={'体重（kg）'} type={'tel'} placeholder={'60'} ref={inputWeight} />
+              <TextField label={'体重（kg）'} type={'tel'} placeholder={'60'} ref={inputWeight} />
             </div>
             <div>
-              <FormSelect
+              <Select
                 label={'身体活動レベル'}
                 option={[
                   { text: '選択', hidden: true },
@@ -107,9 +107,9 @@ const AccountRegisterPage: React.FC<Props> = ({ history }) => {
               />
             </div>
           </fieldset>
-          <UMargin mt={40}>
+          <Margin mt={40}>
             <Button color="primary">登録する</Button>
-          </UMargin>
+          </Margin>
         </SubSection>
       </Section>
     </DefaultLayout>

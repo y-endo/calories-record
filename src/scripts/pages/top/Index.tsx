@@ -1,10 +1,10 @@
 import * as React from 'react';
+import styled from 'styled-components';
 import { useSelector } from 'react-redux';
 
 import DefaultLayout from '~/scripts/layouts/Default';
-import { Section } from '~/scripts/elements/Section';
-import { HeadingLv1 } from '~/scripts/elements/Heading';
-import { UText } from '~/scripts/utils/UText';
+import { Section } from '~/scripts/components/common/Section';
+import { HeadingLv1 } from '~/scripts/components/common/Heading';
 
 import { RootState } from '~/scripts/stores';
 import IMeal from '~/scripts/interfaces/IMeal';
@@ -60,11 +60,7 @@ const TopPage: React.FC = () => {
 
   let all;
   if (userData && sumCalories.all >= userData.requiredEnergy) {
-    all = (
-      <UText fw={'bold'} c={'#f00'}>
-        {sumCalories.all}
-      </UText>
-    );
+    all = <WarnText>{sumCalories.all}</WarnText>;
   } else {
     all = sumCalories.all;
   }
@@ -117,5 +113,10 @@ const TopPage: React.FC = () => {
     </DefaultLayout>
   );
 };
+
+const WarnText = styled.span`
+  font-weight: bold;
+  color: #f00;
+`;
 
 export default TopPage;

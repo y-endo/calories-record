@@ -1,12 +1,10 @@
 import * as React from 'react';
 import styled from 'styled-components';
 
-import { UText } from '~/scripts/utils/UText';
-
 const AppFooter: React.FC = () => {
   return (
     <Footer>
-      <UText as={'p'}>フッター</UText>
+      <p>フッター</p>
     </Footer>
   );
 };

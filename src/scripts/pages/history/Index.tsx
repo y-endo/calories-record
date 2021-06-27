@@ -2,8 +2,8 @@ import * as React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import DefaultLayout from '~/scripts/layouts/Default';
-import { Section } from '~/scripts/elements/Section';
-import { HeadingLv1 } from '~/scripts/elements/Heading';
+import { Section } from '~/scripts/components/common/Section';
+import { HeadingLv1 } from '~/scripts/components/common/Heading';
 
 import { RootState, AppDispatch } from '~/scripts/stores';
 import { fetchHistory } from '~/scripts/stores/history';

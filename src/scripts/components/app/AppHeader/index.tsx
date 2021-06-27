@@ -2,29 +2,27 @@ import * as React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-import { UText } from '~/scripts/utils/UText';
-
 const AppHeader: React.FC = () => {
   return (
     <Header>
       <StyledLink to="/">
-        <UText as={'p'}>ロゴ</UText>
+        <p>ロゴ</p>
       </StyledLink>
       <Nav>
         <ul>
           <li>
             <StyledLink to="/register">
-              <UText>登録</UText>
+              <span>登録</span>
             </StyledLink>
           </li>
           <li>
             <StyledLink to="/history">
-              <UText>履歴</UText>
+              <span>履歴</span>
             </StyledLink>
           </li>
           <li>
             <StyledLink to="/user">
-              <UText>ユーザー</UText>
+              <span>ユーザー</span>
             </StyledLink>
           </li>
         </ul>

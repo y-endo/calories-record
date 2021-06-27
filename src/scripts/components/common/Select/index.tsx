@@ -1,8 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
 
-import { UText } from '~/scripts/utils/UText';
-
 interface Props {
   label?: string;
   option: {
@@ -14,7 +12,7 @@ interface Props {
   ref?: React.RefObject<void>;
 }
 
-const FormSelect = React.forwardRef<HTMLSelectElement, Props>(({ label, option }, ref) => {
+const Select = React.forwardRef<HTMLSelectElement, Props>(({ label, option }, ref) => {
   const items = option.map((item, index) => (
     <option key={`item-${index}`} value={item.value} hidden={item.hidden} selected={item.selected}>
       {item.text}
@@ -23,8 +21,8 @@ const FormSelect = React.forwardRef<HTMLSelectElement, Props>(({ label, option }
 
   return (
     <Flex>
-      {label && <UText>{label}</UText>}
-      <Select ref={ref}>{items}</Select>
+      {label && <LabelText>{label}</LabelText>}
+      <StyledSelect ref={ref}>{items}</StyledSelect>
     </Flex>
   );
 });
@@ -40,15 +38,17 @@ const Flex = styled.label`
   }
 `;
 
-const Select = styled.select`
+const LabelText = styled.span``;
+
+const StyledSelect = styled.select`
   font-size: 1.6rem;
   border: solid 1px #ccc;
   padding: 0 10px;
   height: 40px;
 
-  ${UText} + & {
+  ${LabelText} + & {
     margin-left: 15px;
   }
 `;
 
-export default FormSelect;
+export default Select;

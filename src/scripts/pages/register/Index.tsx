@@ -1,14 +1,13 @@
 import * as React from 'react';
 
 import DefaultLayout from '~/scripts/layouts/Default';
-import Margin from '~/scripts/utils/UMargin';
-import { Section, SubSection } from '~/scripts/elements/Section';
-import { UButton } from '~/scripts/utils/UButton';
-import { HeadingLv1 } from '~/scripts/elements/Heading';
-import { Legend } from '~/scripts/elements/Text';
-import FormInput from '~/scripts/components/common/FormInput';
-import FormTextarea from '~/scripts/components/common/FormTextarea';
-import FormSelect from '~/scripts/components/common/FormSelect';
+import Margin from '~/scripts/utils/Margin';
+import { Section, SubSection } from '~/scripts/components/common/Section';
+import { HeadingLv1 } from '~/scripts/components/common/Heading';
+import { Legend } from '~/scripts/components/common/Legend';
+import { Button } from '~/scripts/components/common/Button';
+import TextField from '~/scripts/components/common/TextField';
+import Select from '~/scripts/components/common/Select';
 
 const RegisterPage: React.FC = () => {
   const inputDate = React.useRef<HTMLInputElement>(null);
@@ -60,8 +59,8 @@ const RegisterPage: React.FC = () => {
         <SubSection as={'form'} onSubmit={handleSubmit}>
           <fieldset>
             <Legend>日付・時間</Legend>
-            <FormInput label={'日付'} type={'date'} ref={inputDate} />
-            <FormSelect
+            <TextField label={'日付'} type={'date'} ref={inputDate} />
+            <Select
               label={'時間'}
               option={[
                 { text: '選択', hidden: true },
@@ -75,20 +74,20 @@ const RegisterPage: React.FC = () => {
           </fieldset>
           <fieldset>
             <Legend>摂取カロリー</Legend>
-            <FormInput label={'カロリー（kcal）'} type={'tel'} placeholder={'100'} ref={inputCalorie} />
+            <TextField label={'カロリー（kcal）'} type={'tel'} placeholder={'100'} ref={inputCalorie} />
           </fieldset>
           <fieldset>
             <Legend>摂取栄養素</Legend>
-            <FormInput label={'タンパク質（g）'} type={'tel'} placeholder={'100'} ref={inputProtein} />
-            <FormInput label={'炭水化物（g）'} type={'tel'} placeholder={'100'} ref={inputCarbs} />
-            <FormInput label={'脂質（g）'} type={'tel'} placeholder={'100'} ref={inputFat} />
+            <TextField label={'タンパク質（g）'} type={'tel'} placeholder={'100'} ref={inputProtein} />
+            <TextField label={'炭水化物（g）'} type={'tel'} placeholder={'100'} ref={inputCarbs} />
+            <TextField label={'脂質（g）'} type={'tel'} placeholder={'100'} ref={inputFat} />
           </fieldset>
           <fieldset>
             <Legend>食べたもの</Legend>
-            <FormTextarea placeholder={'白米'} ref={textareaFood} />
+            <TextField multiline={true} placeholder={'白米'} ref={textareaFood} />
           </fieldset>
           <Margin mt={40}>
-            <UButton>登録する</UButton>
+            <Button color="primary">登録する</Button>
           </Margin>
         </SubSection>
       </Section>

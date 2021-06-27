@@ -3,8 +3,8 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import DefaultLayout from '~/scripts/layouts/Default';
 import IndexView from '~/scripts/components/user/IndexView';
-import { Section } from '~/scripts/elements/Section';
-import { HeadingLv1 } from '~/scripts/elements/Heading';
+import { Section } from '~/scripts/components/common/Section';
+import { HeadingLv1 } from '~/scripts/components/common/Heading';
 
 import { clearData } from '~/scripts/stores/user';
 import { AppDispatch } from '~/scripts/stores';
