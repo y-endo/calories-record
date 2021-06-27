@@ -3,15 +3,15 @@ const router = express.Router();
 const Meal = require('../models/Meal');
 
 router.post('/', async (req, res) => {
-  const { date, time, calorie, protein, carbo, lipid, food } = req.body;
+  const { date, time, calorie, protein, carbs, fat, food } = req.body;
 
   const meal = new Meal({
     date,
     time,
     calorie,
     protein,
-    carbo,
-    lipid,
+    carbs,
+    fat,
     food
   });
 

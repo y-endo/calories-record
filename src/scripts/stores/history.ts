@@ -2,18 +2,20 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 import IMeal from '~/scripts/interfaces/IMeal';
 
-export const fetchData = createAsyncThunk<{ data: IMeal[] }>('fetchData', async () => {
+export const fetchHistory = createAsyncThunk<{ data: IMeal[] }>('fetchHistory', async () => {
   const res = await fetch('/api/get-meal');
   const json = await res.json();
   return { data: json };
 });
 
 const initialState: {
-  status: string;
+  fetchHistoryStatus: string;
   data: IMeal[];
+  isLoaded: boolean;
 } = {
-  status: '',
-  data: []
+  fetchHistoryStatus: '',
+  data: [],
+  isLoaded: false
 };
 
 const slice = createSlice({
@@ -28,20 +30,23 @@ const slice = createSlice({
     }
   },
   extraReducers: builder => {
-    // fetchData 成功
-    builder.addCase(fetchData.fulfilled, (state, action) => {
-      state.status = '1';
+    // fetchHistory 成功
+    builder.addCase(fetchHistory.fulfilled, (state, action) => {
+      state.fetchHistoryStatus = '1';
       state.data = action.payload.data;
+      state.isLoaded = true;
     });
 
-    // fetchData 処理中
-    builder.addCase(fetchData.pending, state => {
-      state.status = '0';
+    // fetchHistory 処理中
+    builder.addCase(fetchHistory.pending, state => {
+      state.fetchHistoryStatus = '0';
+      state.isLoaded = false;
     });
 
-    // fetchData 失敗
-    builder.addCase(fetchData.rejected, state => {
-      state.status = '-1';
+    // fetchHistory 失敗
+    builder.addCase(fetchHistory.rejected, state => {
+      state.fetchHistoryStatus = '-1';
+      state.isLoaded = true;
     });
   }
 });

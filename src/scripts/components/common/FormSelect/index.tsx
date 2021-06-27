@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
 
-import { Text } from '~/scripts/elements/Text';
+import { UText } from '~/scripts/utils/UText';
 
 interface Props {
   label?: string;
@@ -23,7 +23,7 @@ const FormSelect = React.forwardRef<HTMLSelectElement, Props>(({ label, option }
 
   return (
     <Flex>
-      {label && <Text>{label}</Text>}
+      {label && <UText>{label}</UText>}
       <Select ref={ref}>{items}</Select>
     </Flex>
   );
@@ -46,7 +46,7 @@ const Select = styled.select`
   padding: 0 10px;
   height: 40px;
 
-  ${Text} + & {
+  ${UText} + & {
     margin-left: 15px;
   }
 `;

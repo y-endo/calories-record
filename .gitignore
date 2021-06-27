@@ -1,5 +1,5 @@
 node_modules
 .DS_Store
-api/mongodb/*
-!api/mongodb/.gitkeep
+mongodb/*
+!mongodb/.gitkeep
 memo.txt

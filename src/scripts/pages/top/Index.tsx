@@ -1,12 +1,16 @@
 import * as React from 'react';
+import { useSelector } from 'react-redux';
 
 import DefaultLayout from '~/scripts/layouts/Default';
 import { Section } from '~/scripts/elements/Section';
 import { HeadingLv1 } from '~/scripts/elements/Heading';
+import { UText } from '~/scripts/utils/UText';
 
+import { RootState } from '~/scripts/stores';
 import IMeal from '~/scripts/interfaces/IMeal';
 
 const TopPage: React.FC = () => {
+  const userData = useSelector((state: RootState) => state.user.data);
   const [data, setData] = React.useState<IMeal[]>();
 
   console.log('今日のデータ:', data);
@@ -53,11 +57,26 @@ const TopPage: React.FC = () => {
 
     foods[d.time] = d.food;
   });
+
+  let all;
+  if (userData && sumCalories.all >= userData.requiredEnergy) {
+    all = (
+      <UText fw={'bold'} c={'#f00'}>
+        {sumCalories.all}
+      </UText>
+    );
+  } else {
+    all = sumCalories.all;
+  }
+
   return (
     <DefaultLayout>
       <Section>
         <HeadingLv1>今日の摂取カロリー</HeadingLv1>
-        <p>合計: {sumCalories.all}kcal</p>
+        <div>
+          <p>合計: {all} kcal</p>
+          {userData?.requiredEnergy && <p>1日に必要な推定エネルギー: {userData.requiredEnergy} kcal</p>}
+        </div>
         <div>
           <dl>
             <dt>朝食</dt>
@@ -65,7 +84,7 @@ const TopPage: React.FC = () => {
               <pre>{foods.breakfast}</pre>
             </dd>
           </dl>
-          <p>{sumCalories.breakfast}kcal</p>
+          <p>{sumCalories.breakfast} kcal</p>
         </div>
         <div>
           <dl>
@@ -74,7 +93,7 @@ const TopPage: React.FC = () => {
               <pre>{foods.lunch}</pre>
             </dd>
           </dl>
-          <p>{sumCalories.lunch}kcal</p>
+          <p>{sumCalories.lunch} kcal</p>
         </div>
         <div>
           <dl>
@@ -83,7 +102,7 @@ const TopPage: React.FC = () => {
               <pre>{foods.dinner}</pre>
             </dd>
           </dl>
-          <p>{sumCalories.dinner}kcal</p>
+          <p>{sumCalories.dinner} kcal</p>
         </div>
         <div>
           <dl>
@@ -92,7 +111,7 @@ const TopPage: React.FC = () => {
               <pre>{foods.other}</pre>
             </dd>
           </dl>
-          <p>{sumCalories.other}kcal</p>
+          <p>{sumCalories.other} kcal</p>
         </div>
       </Section>
     </DefaultLayout>

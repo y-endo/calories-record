@@ -2,7 +2,8 @@ version: '3'
 services:
   mongo:
     image: mongo
+    container_name: CR_mongodb
     ports:
       - 27017:27017
     volumes:
-      - ./api/mongodb:/data/db
+      - ./mongodb:/data/db

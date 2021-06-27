@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
 
-import { Text } from '~/scripts/elements/Text';
+import { UText } from '~/scripts/utils/UText';
 
 interface Props {
   label?: string;
@@ -35,7 +35,7 @@ interface Props {
 const FormInput = React.forwardRef<HTMLInputElement, Props>(({ label, type, placeholder }, ref) => {
   return (
     <Label>
-      {label && <Text>{label}</Text>}
+      {label && <UText>{label}</UText>}
       <Input type={type} placeholder={placeholder} ref={ref} />
     </Label>
   );
@@ -61,7 +61,7 @@ const Input = styled.input.attrs(props => ({
   padding: 0 10px;
   height: 40px;
 
-  ${Text} + & {
+  ${UText} + & {
     margin-left: 15px;
   }
 `;

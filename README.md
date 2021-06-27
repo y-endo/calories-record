@@ -33,6 +33,3 @@ yarn dev
 ```
 yarn build
 ```
-
-ビルドコマンドはJSの圧縮以外にstylelintも走るので、エラーがでた場合は要修正。  
-現状styled-componentsに対してstylelintのfixオプションは使えない。  

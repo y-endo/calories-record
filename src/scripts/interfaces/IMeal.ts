@@ -3,7 +3,7 @@ export default interface IMeal {
   time: 'breakfast' | 'lunch' | 'dinner' | 'other';
   calorie: string;
   protein: string;
-  carbo: string;
-  lipid: string;
+  carbs: string;
+  fat: string;
   food: string;
 }

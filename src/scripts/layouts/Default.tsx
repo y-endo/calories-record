@@ -1,8 +1,8 @@
 import * as React from 'react';
 import styled from 'styled-components';
 
-import AppHeader from '~/scripts/components/AppHeader';
-import AppFooter from '~/scripts/components/AppFooter';
+import AppHeader from '~/scripts/components/app/AppHeader';
+import AppFooter from '~/scripts/components/app/AppFooter';
 
 const Default: React.FC = ({ children }) => {
   return (

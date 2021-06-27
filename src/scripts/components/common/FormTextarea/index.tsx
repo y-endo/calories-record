@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
 
-import { Text } from '~/scripts/elements/Text';
+import { UText } from '~/scripts/utils/UText';
 
 interface Props {
   label?: string;
@@ -12,7 +12,7 @@ interface Props {
 const FormTextarea = React.forwardRef<HTMLTextAreaElement, Props>(({ label, placeholder }, ref) => {
   return (
     <Label>
-      {label && <Text>{label}</Text>}
+      {label && <UText>{label}</UText>}
       <Textarea placeholder={placeholder} ref={ref} />
     </Label>
   );
@@ -39,7 +39,7 @@ const Textarea = styled.textarea.attrs(props => ({
   min-height: 120px;
   resize: vertical;
 
-  ${Text} + & {
+  ${UText} + & {
     margin-left: 15px;
   }
 `;

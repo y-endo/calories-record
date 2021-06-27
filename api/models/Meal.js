@@ -5,8 +5,8 @@ const MealSchema = mongoose.Schema({
   time: String,
   calorie: String,
   protein: String,
-  carbo: String,
-  lipid: String,
+  carbs: String,
+  fat: String,
   food: String
 });
 
