@@ -22,7 +22,7 @@
     "paths": {
       "~/*": ["./src/*"]
     },
-    "typeRoots": ["node_modules/@types", "./src/scripts/@types"]
+    "typeRoots": ["node_modules/@types", "src/@types"]
   },
   "include": ["src/**/*.ts", "src/**/*.tsx"],
   "exclude": ["node_modules"]

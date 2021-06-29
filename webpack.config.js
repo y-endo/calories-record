@@ -7,7 +7,7 @@ module.exports = {
   mode,
   devtool: mode === 'production' ? false : 'inline-source-map',
   entry: {
-    app: './src/scripts/index.tsx'
+    app: './src/index.tsx'
   },
   output: {
     filename: '[name].js',

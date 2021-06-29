@@ -5,7 +5,7 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "eslint": "eslint --fix \"./src/scripts/**/*.ts\"",
+    "eslint": "eslint --fix \"./src/**/*.ts\"",
     "dev": "NODE_ENV=development webpack-dev-server --config ./webpack.config.js",
     "build": "yarn eslint && NODE_ENV=production webpack --colors --config ./webpack.config.js",
     "api-server": "node api/index.js",
@@ -17,7 +17,7 @@
     }
   },
   "lint-staged": {
-    "src/scripts/**/*.ts": [
+    "src/**/*.ts": [
       "yarn eslint"
     ]
   },
