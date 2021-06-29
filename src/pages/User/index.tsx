@@ -17,9 +17,11 @@ const UserPage: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
 
   const deleteUser = React.useCallback(async () => {
-    await fetch('/api/delete-user');
-    dispatch(clearData());
-    alert('削除しました');
+    if (confirm('削除しますか')) {
+      await fetch('/api/delete-user');
+      dispatch(clearData());
+      alert('削除しました');
+    }
   }, []);
 
   const activeLevelText: { [key: string]: string } = {
