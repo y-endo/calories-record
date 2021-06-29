@@ -20,7 +20,7 @@ const UserPage: React.FC = () => {
     await fetch('/api/delete-user');
     dispatch(clearData());
     alert('削除しました');
-  }, [dispatch]);
+  }, []);
 
   const activeLevelText: { [key: string]: string } = {
     '1.5': '低い',

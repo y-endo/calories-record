@@ -28,18 +28,28 @@ interface Props {
     | 'button';
   placeholder?: string;
   multiline?: boolean;
+  defaultValue?: string | number;
   ref?: React.RefObject<void>;
 }
 
 const TextField = React.forwardRef<HTMLInputElement | HTMLTextAreaElement, Props>(
-  ({ label, type = 'text', placeholder, multiline = false }, ref) => {
+  ({ label, type = 'text', placeholder, multiline = false, defaultValue }, ref) => {
     return (
       <Label>
         {label && <LabelText>{label}</LabelText>}
         {multiline ? (
-          <Textarea placeholder={placeholder} ref={ref as React.RefObject<HTMLTextAreaElement>} />
+          <Textarea
+            placeholder={placeholder}
+            defaultValue={defaultValue}
+            ref={ref as React.RefObject<HTMLTextAreaElement>}
+          />
         ) : (
-          <Input type={type} placeholder={placeholder} ref={ref as React.RefObject<HTMLInputElement>} />
+          <Input
+            type={type}
+            placeholder={placeholder}
+            defaultValue={defaultValue}
+            ref={ref as React.RefObject<HTMLInputElement>}
+          />
         )}
       </Label>
     );
@@ -61,7 +71,8 @@ const LabelText = styled.span``;
 
 const Input = styled.input.attrs(props => ({
   type: props.type,
-  placeholder: props.placeholder
+  placeholder: props.placeholder,
+  defaultValue: props.defaultValue
 }))`
   font-size: 1.6rem;
   border: solid 1px #ccc;
@@ -75,7 +86,8 @@ const Input = styled.input.attrs(props => ({
 `;
 
 const Textarea = styled.textarea.attrs(props => ({
-  placeholder: props.placeholder
+  placeholder: props.placeholder,
+  defaultValue: props.defaultValue
 }))`
   width: 100%;
   font-size: 1.6rem;

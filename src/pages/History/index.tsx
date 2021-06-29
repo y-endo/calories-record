@@ -20,7 +20,7 @@ const HistoryPage: React.FC = () => {
   React.useEffect(() => {
     if (isLoaded) return;
     dispatch(fetchHistory());
-  }, [dispatch]);
+  }, []);
 
   let view;
   if (fetchHistoryStatus === '-1') {

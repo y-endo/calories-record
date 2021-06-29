@@ -10,7 +10,7 @@ const AppContainer: React.FC = ({ children }) => {
 
   React.useEffect(() => {
     dispatch(setUser());
-  }, [dispatch]);
+  }, []);
 
   if (setUserStatus === '0') return null;
   // if (setUserStatus === '-1') // エラー画面

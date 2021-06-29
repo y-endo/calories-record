@@ -7,14 +7,14 @@ interface Props {
     value?: string;
     text: string;
     hidden?: boolean;
-    selected?: boolean;
   }[];
+  defaultValue?: string;
   ref?: React.RefObject<void>;
 }
 
-const Select = React.forwardRef<HTMLSelectElement, Props>(({ label, option }, ref) => {
+const Select = React.forwardRef<HTMLSelectElement, Props>(({ label, option, defaultValue }, ref) => {
   const items = option.map((item, index) => (
-    <option key={`item-${index}`} value={item.value} hidden={item.hidden} selected={item.selected}>
+    <option key={`item-${index}`} value={item.value} hidden={item.hidden}>
       {item.text}
     </option>
   ));
@@ -22,7 +22,9 @@ const Select = React.forwardRef<HTMLSelectElement, Props>(({ label, option }, re
   return (
     <Flex>
       {label && <LabelText>{label}</LabelText>}
-      <StyledSelect ref={ref}>{items}</StyledSelect>
+      <StyledSelect defaultValue={defaultValue} ref={ref}>
+        {items}
+      </StyledSelect>
     </Flex>
   );
 });
@@ -40,7 +42,9 @@ const Flex = styled.label`
 
 const LabelText = styled.span``;
 
-const StyledSelect = styled.select`
+const StyledSelect = styled.select.attrs(props => ({
+  defaultValue: props.defaultValue
+}))`
   font-size: 1.6rem;
   border: solid 1px #ccc;
   padding: 0 10px;
