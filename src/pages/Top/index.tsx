@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import { useSelector } from 'react-redux';
 
 import DefaultLayout from '~/shared/layouts/Default';
-import { Section } from '~/shared/components/Section';
-import { HeadingLv1 } from '~/shared/components/Heading';
+import { Section } from '~/shared/components/Section/style';
+import { HeadingLv1 } from '~/shared/components/Heading/style';
 
 import { RootState } from '~/shared/stores';
 import IMeal from '~/shared/interfaces/IMeal';

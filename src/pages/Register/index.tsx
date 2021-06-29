@@ -2,10 +2,10 @@ import * as React from 'react';
 
 import DefaultLayout from '~/shared/layouts/Default';
 import { Margin } from '~/shared/utils/style';
-import { Section, SubSection } from '~/shared/components/Section';
-import { HeadingLv1 } from '~/shared/components/Heading';
-import { Legend } from '~/shared/components/Legend';
-import { Button } from '~/shared/components/Button';
+import { Section, SubSection } from '~/shared/components/Section/style';
+import { HeadingLv1 } from '~/shared/components/Heading/style';
+import { Legend } from '~/shared/components/Legend/style';
+import { Button } from '~/shared/components/Button/style';
 import TextField from '~/shared/components/TextField';
 import Select from '~/shared/components/Select';
 

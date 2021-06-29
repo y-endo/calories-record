@@ -2,8 +2,8 @@ import * as React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import DefaultLayout from '~/shared/layouts/Default';
-import { Section } from '~/shared/components/Section';
-import { HeadingLv1 } from '~/shared/components/Heading';
+import { Section } from '~/shared/components/Section/style';
+import { HeadingLv1 } from '~/shared/components/Heading/style';
 import Table from '~/shared/components/Table';
 
 import { RootState, AppDispatch } from '~/shared/stores';

@@ -3,9 +3,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import DefaultLayout from '~/shared/layouts/Default';
-import { Section, SubSection } from '~/shared/components/Section';
-import { HeadingLv1 } from '~/shared/components/Heading';
-import { Button } from '~/shared/components/Button';
+import { Section, SubSection } from '~/shared/components/Section/style';
+import { HeadingLv1 } from '~/shared/components/Heading/style';
+import { Button } from '~/shared/components/Button/style';
 
 import { clearData } from '~/shared/stores/user';
 import { AppDispatch } from '~/shared/stores';

@@ -3,10 +3,10 @@ import { Redirect, RouteComponentProps } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
 import DefaultLayout from '~/shared/layouts/Default';
-import { Section, SubSection } from '~/shared/components/Section';
-import { HeadingLv1 } from '~/shared/components/Heading';
-import { Button } from '~/shared/components/Button';
-import { Legend } from '~/shared/components/Legend';
+import { Section, SubSection } from '~/shared/components/Section/style';
+import { HeadingLv1 } from '~/shared/components/Heading/style';
+import { Button } from '~/shared/components/Button/style';
+import { Legend } from '~/shared/components/Legend/style';
 import { Margin } from '~/shared/utils/style';
 import TextField from '~/shared/components/TextField';
 import Select from '~/shared/components/Select';
