@@ -6,6 +6,7 @@ import TextField from '~/shared/components/TextField';
 import Select from '~/shared/components/Select';
 import { Button } from '~/shared/components/Button/style';
 import { Margin } from '~/shared/utils/style';
+import { BackButton } from './style';
 
 import IUser from '~/shared/interfaces/IUser';
 
@@ -51,6 +52,7 @@ const UserForm: React.FC<Props> = ({ values, submit }) => {
         <Legend>あなたの情報</Legend>
         <div>
           <TextField
+            id={'tf-age'}
             label={'年齢'}
             type={'tel'}
             placeholder={'20'}
@@ -60,6 +62,7 @@ const UserForm: React.FC<Props> = ({ values, submit }) => {
         </div>
         <div>
           <Select
+            id={'sel-sex'}
             label={'性別'}
             option={[
               { text: '選択', hidden: true },
@@ -72,6 +75,7 @@ const UserForm: React.FC<Props> = ({ values, submit }) => {
         </div>
         <div>
           <TextField
+            id={'tf-height'}
             label={'身長（cm）'}
             type={'tel'}
             placeholder={'170'}
@@ -81,6 +85,7 @@ const UserForm: React.FC<Props> = ({ values, submit }) => {
         </div>
         <div>
           <TextField
+            id={'tf-weight'}
             label={'体重（kg）'}
             type={'tel'}
             placeholder={'60'}
@@ -90,6 +95,7 @@ const UserForm: React.FC<Props> = ({ values, submit }) => {
         </div>
         <div>
           <Select
+            id={'sel-activeLevel'}
             label={'身体活動レベル'}
             option={[
               { text: '選択', hidden: true },
@@ -105,6 +111,7 @@ const UserForm: React.FC<Props> = ({ values, submit }) => {
       <Margin mt={40}>
         <Button color="primary">{values ? '更新する' : '登録する'}</Button>
       </Margin>
+      <BackButton to={'/user'}>戻る</BackButton>
     </SubSection>
   );
 };

@@ -2,6 +2,7 @@ import * as React from 'react';
 import styled from 'styled-components';
 
 interface Props {
+  id: string;
   label?: string;
   option: {
     value?: string;
@@ -12,7 +13,7 @@ interface Props {
   ref?: React.RefObject<void>;
 }
 
-const Select = React.forwardRef<HTMLSelectElement, Props>(({ label, option, defaultValue }, ref) => {
+const Select = React.forwardRef<HTMLSelectElement, Props>(({ id, label, option, defaultValue }, ref) => {
   const items = option.map((item, index) => (
     <option key={`item-${index}`} value={item.value} hidden={item.hidden}>
       {item.text}
@@ -20,16 +21,16 @@ const Select = React.forwardRef<HTMLSelectElement, Props>(({ label, option, defa
   ));
 
   return (
-    <Flex>
-      {label && <LabelText>{label}</LabelText>}
-      <StyledSelect defaultValue={defaultValue} ref={ref}>
+    <FlexBox>
+      {label && <LabelText htmlFor={id}>{label}</LabelText>}
+      <StyledSelect id={id} defaultValue={defaultValue} ref={ref}>
         {items}
       </StyledSelect>
-    </Flex>
+    </FlexBox>
   );
 });
 
-const Flex = styled.label`
+const FlexBox = styled.div`
   display: inline-flex;
   align-items: center;
   margin-top: 20px;
@@ -40,9 +41,12 @@ const Flex = styled.label`
   }
 `;
 
-const LabelText = styled.span``;
+const LabelText = styled.label.attrs(props => ({
+  htmlFor: props.htmlFor
+}))``;
 
 const StyledSelect = styled.select.attrs(props => ({
+  id: props.id,
   defaultValue: props.defaultValue
 }))`
   font-size: 1.6rem;

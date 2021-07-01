@@ -59,8 +59,9 @@ const RegisterPage: React.FC = () => {
         <SubSection as={'form'} onSubmit={handleSubmit}>
           <fieldset>
             <Legend>日付・時間</Legend>
-            <TextField label={'日付'} type={'date'} ref={inputDate} />
+            <TextField id={'tf-date'} label={'日付'} type={'date'} ref={inputDate} />
             <Select
+              id="sel-time"
               label={'時間'}
               option={[
                 { text: '選択', hidden: true },
@@ -74,17 +75,29 @@ const RegisterPage: React.FC = () => {
           </fieldset>
           <fieldset>
             <Legend>摂取カロリー</Legend>
-            <TextField label={'カロリー（kcal）'} type={'tel'} placeholder={'100'} ref={inputCalorie} />
+            <TextField
+              id={'tf-calorie'}
+              label={'カロリー（kcal）'}
+              type={'tel'}
+              placeholder={'100'}
+              ref={inputCalorie}
+            />
           </fieldset>
           <fieldset>
             <Legend>摂取栄養素</Legend>
-            <TextField label={'炭水化物（g）'} type={'tel'} placeholder={'100'} ref={inputCarbs} />
-            <TextField label={'タンパク質（g）'} type={'tel'} placeholder={'100'} ref={inputProtein} />
-            <TextField label={'脂質（g）'} type={'tel'} placeholder={'100'} ref={inputFat} />
+            <TextField id={'tf-carbs'} label={'炭水化物（g）'} type={'tel'} placeholder={'100'} ref={inputCarbs} />
+            <TextField
+              id={'tf-protein'}
+              label={'タンパク質（g）'}
+              type={'tel'}
+              placeholder={'100'}
+              ref={inputProtein}
+            />
+            <TextField id={'tf-fat'} label={'脂質（g）'} type={'tel'} placeholder={'100'} ref={inputFat} />
           </fieldset>
           <fieldset>
             <Legend>食べたもの</Legend>
-            <TextField multiline={true} placeholder={'白米'} ref={textareaFood} />
+            <TextField id={'tf-food'} multiline={true} placeholder={'白米'} ref={textareaFood} />
           </fieldset>
           <Margin mt={40}>
             <Button color="primary">登録する</Button>

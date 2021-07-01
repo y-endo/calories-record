@@ -2,6 +2,7 @@ import * as React from 'react';
 import styled from 'styled-components';
 
 interface Props {
+  id: string;
   label?: string;
   type?:
     | 'text'
@@ -33,30 +34,32 @@ interface Props {
 }
 
 const TextField = React.forwardRef<HTMLInputElement | HTMLTextAreaElement, Props>(
-  ({ label, type = 'text', placeholder, multiline = false, defaultValue }, ref) => {
+  ({ id, label, type = 'text', placeholder, multiline = false, defaultValue }, ref) => {
     return (
-      <Label>
-        {label && <LabelText>{label}</LabelText>}
+      <FlexBox>
+        {label && <LabelText htmlFor={id}>{label}</LabelText>}
         {multiline ? (
           <Textarea
+            id={id}
             placeholder={placeholder}
             defaultValue={defaultValue}
             ref={ref as React.RefObject<HTMLTextAreaElement>}
           />
         ) : (
           <Input
+            id={id}
             type={type}
             placeholder={placeholder}
             defaultValue={defaultValue}
             ref={ref as React.RefObject<HTMLInputElement>}
           />
         )}
-      </Label>
+      </FlexBox>
     );
   }
 );
 
-const Label = styled.label`
+const FlexBox = styled.div`
   display: inline-flex;
   align-items: center;
   margin-top: 20px;
@@ -67,9 +70,12 @@ const Label = styled.label`
   }
 `;
 
-const LabelText = styled.span``;
+const LabelText = styled.label.attrs(props => ({
+  htmlFor: props.htmlFor
+}))``;
 
 const Input = styled.input.attrs(props => ({
+  id: props.id,
   type: props.type,
   placeholder: props.placeholder,
   defaultValue: props.defaultValue
@@ -86,6 +92,7 @@ const Input = styled.input.attrs(props => ({
 `;
 
 const Textarea = styled.textarea.attrs(props => ({
+  id: props.id,
   placeholder: props.placeholder,
   defaultValue: props.defaultValue
 }))`
