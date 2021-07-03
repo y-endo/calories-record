@@ -30,11 +30,12 @@ interface Props {
   placeholder?: string;
   multiline?: boolean;
   defaultValue?: string | number;
+  handleChange?: (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
   ref?: React.RefObject<void>;
 }
 
 const TextField = React.forwardRef<HTMLInputElement | HTMLTextAreaElement, Props>(
-  ({ id, label, type = 'text', placeholder, multiline = false, defaultValue }, ref) => {
+  ({ id, label, type = 'text', placeholder, multiline = false, defaultValue, handleChange }, ref) => {
     return (
       <FlexBox>
         {label && <LabelText htmlFor={id}>{label}</LabelText>}
@@ -43,6 +44,7 @@ const TextField = React.forwardRef<HTMLInputElement | HTMLTextAreaElement, Props
             id={id}
             placeholder={placeholder}
             defaultValue={defaultValue}
+            onChange={handleChange}
             ref={ref as React.RefObject<HTMLTextAreaElement>}
           />
         ) : (
@@ -51,6 +53,7 @@ const TextField = React.forwardRef<HTMLInputElement | HTMLTextAreaElement, Props
             type={type}
             placeholder={placeholder}
             defaultValue={defaultValue}
+            onChange={handleChange}
             ref={ref as React.RefObject<HTMLInputElement>}
           />
         )}

@@ -10,10 +10,11 @@ interface Props {
     hidden?: boolean;
   }[];
   defaultValue?: string;
+  handleChange?: (event: React.ChangeEvent<HTMLSelectElement>) => void;
   ref?: React.RefObject<void>;
 }
 
-const Select = React.forwardRef<HTMLSelectElement, Props>(({ id, label, option, defaultValue }, ref) => {
+const Select = React.forwardRef<HTMLSelectElement, Props>(({ id, label, option, defaultValue, handleChange }, ref) => {
   const items = option.map((item, index) => (
     <option key={`item-${index}`} value={item.value} hidden={item.hidden}>
       {item.text}
@@ -23,7 +24,7 @@ const Select = React.forwardRef<HTMLSelectElement, Props>(({ id, label, option, 
   return (
     <FlexBox>
       {label && <LabelText htmlFor={id}>{label}</LabelText>}
-      <StyledSelect id={id} defaultValue={defaultValue} ref={ref}>
+      <StyledSelect id={id} defaultValue={defaultValue} onChange={handleChange} ref={ref}>
         {items}
       </StyledSelect>
     </FlexBox>

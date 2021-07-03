@@ -31,6 +31,14 @@ export const Button = styled.button<ButtonProps>`
       background-color: ${props.theme.palette.secondary.main};
     `}
 
+  &:disabled {
+    color: #666;
+    background-color: #eee;
+    &:hover {
+      filter: brightness(1);
+    }
+  }
+
   &:hover {
     filter: brightness(1.1);
   }

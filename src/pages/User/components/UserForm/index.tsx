@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { SubSection } from '~/shared/components/Section/style';
-import { Legend } from '~/shared/components/Legend/style';
+import Legend from '~/shared/components/Legend';
 import TextField from '~/shared/components/TextField';
 import Select from '~/shared/components/Select';
 import { Button } from '~/shared/components/Button/style';

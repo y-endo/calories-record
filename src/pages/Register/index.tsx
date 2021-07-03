@@ -4,7 +4,7 @@ import DefaultLayout from '~/shared/layouts/Default';
 import { Margin } from '~/shared/utils/style';
 import { Section, SubSection } from '~/shared/components/Section/style';
 import { HeadingLv1 } from '~/shared/components/Heading/style';
-import { Legend } from '~/shared/components/Legend/style';
+import Legend from '~/shared/components/Legend';
 import { Button } from '~/shared/components/Button/style';
 import TextField from '~/shared/components/TextField';
 import Select from '~/shared/components/Select';
@@ -17,25 +17,27 @@ const RegisterPage: React.FC = () => {
   const inputProtein = React.useRef<HTMLInputElement>(null);
   const inputFat = React.useRef<HTMLInputElement>(null);
   const textareaFood = React.useRef<HTMLTextAreaElement>(null);
+  const [isValid, setIsValid] = React.useState(false);
+
+  const handleChange = React.useCallback(() => {
+    if (inputDate.current?.value && selectTime.current?.value && inputCalorie.current?.value) {
+      setIsValid(true);
+    } else {
+      setIsValid(false);
+    }
+  }, []);
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    if (
-      inputDate.current?.value &&
-      selectTime.current?.value &&
-      inputCalorie.current?.value &&
-      inputCarbs.current?.value &&
-      inputProtein.current?.value &&
-      inputFat.current?.value
-    ) {
+    if (inputDate.current?.value && selectTime.current?.value && inputCalorie.current?.value) {
       const data = {
         date: inputDate.current.value,
         time: selectTime.current.value,
         calorie: inputCalorie.current.value,
-        carbs: inputCarbs.current.value,
-        protein: inputProtein.current.value,
-        fat: inputFat.current.value,
+        carbs: inputCarbs.current?.value,
+        protein: inputProtein.current?.value,
+        fat: inputFat.current?.value,
         food: textareaFood.current?.value
       };
       console.log('登録データ:', data);
@@ -58,8 +60,8 @@ const RegisterPage: React.FC = () => {
         <HeadingLv1>摂取カロリー入力画面</HeadingLv1>
         <SubSection as={'form'} onSubmit={handleSubmit}>
           <fieldset>
-            <Legend>日付・時間</Legend>
-            <TextField id={'tf-date'} label={'日付'} type={'date'} ref={inputDate} />
+            <Legend required>日付・時間</Legend>
+            <TextField id={'tf-date'} label={'日付'} type={'date'} handleChange={handleChange} ref={inputDate} />
             <Select
               id="sel-time"
               label={'時間'}
@@ -70,16 +72,18 @@ const RegisterPage: React.FC = () => {
                 { value: 'dinner', text: '夕食' },
                 { value: 'other', text: '間食' }
               ]}
+              handleChange={handleChange}
               ref={selectTime}
             />
           </fieldset>
           <fieldset>
-            <Legend>摂取カロリー</Legend>
+            <Legend required>摂取カロリー</Legend>
             <TextField
               id={'tf-calorie'}
               label={'カロリー（kcal）'}
               type={'tel'}
               placeholder={'100'}
+              handleChange={handleChange}
               ref={inputCalorie}
             />
           </fieldset>
@@ -100,7 +104,9 @@ const RegisterPage: React.FC = () => {
             <TextField id={'tf-food'} multiline={true} placeholder={'白米'} ref={textareaFood} />
           </fieldset>
           <Margin mt={40}>
-            <Button color="primary">登録する</Button>
+            <Button color="primary" disabled={!isValid}>
+              登録する
+            </Button>
           </Margin>
         </SubSection>
       </Section>
